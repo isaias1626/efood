@@ -1,3 +1,5 @@
+import Button from '../Button'
+
 import {
   Card,
   CardItens,
@@ -10,7 +12,6 @@ import {
 
 import Estrela from '../../Assets/image/estrela.svg'
 import Tag from '../Tag'
-import Botton from '../Button'
 
 export type Props = {
   title: string
@@ -52,13 +53,13 @@ const Product = ({
         </Avaiable>
       </Notes>
       <Descricao>{description}</Descricao>
-      <Botton
+      <Button
         type="link"
         to="/categories"
         title={'clique aqui para ver mais informações do produto'}
       >
         Saiba mais
-      </Botton>
+      </Button>
     </CardItens>
   </Card>
 )
