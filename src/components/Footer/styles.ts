@@ -4,6 +4,7 @@ import { cores } from '../../styles'
 export const FooterBack = styled.div`
   background-color: ${cores.amarelo};
   height: 298px;
+  margin-top: 88px;
 `
 
 export const Logo = styled.div`

@@ -1,3 +1,5 @@
+import { Card, Image, CardItens, Button } from './styles'
+
 type Props = {
   title: string
   description: string
@@ -5,17 +7,17 @@ type Props = {
 }
 
 const Italiana = ({ title, description, image }: Props) => (
-  <div>
-    <div className="container">
-      <div>
-        <div>
-          <img src={image} alt="" />
-        </div>
+  <div className="container">
+    <Card>
+      <Image>
+        <img src={image} alt="s" />
+      </Image>
+      <CardItens>
         <h4>{title}</h4>
         <p>{description}</p>
-        <button>adcionar ao carrinho</button>
-      </div>
-    </div>
+        <Button>Adcionar ao carrinho</Button>
+      </CardItens>
+    </Card>
   </div>
 )
 
