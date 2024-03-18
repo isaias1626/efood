@@ -10,7 +10,7 @@ import {
 
 import Estrela from '../../Assets/image/estrela.svg'
 import Tag from '../Tag'
-import Button from '../Button'
+import Button from '../Button/index'
 
 type Props = {
   title: string
