@@ -1,23 +1,22 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
-  background-color: ${cores.cinza};
-  border-radius: 8px;
-  padding: 8px;
+  background-color: ${cores.branca};
+  border: 1px solid ${cores.laranja};
   position: relative;
-
-  ${TagContainer} {
-    margin-right: 8px;
-  }
+  margin-bottom: 48px;
 `
+export const CardItens = styled.div`
+  padding: 8px 8px;
+`
+
 export const Titulo = styled.h3`
-  font-size: 16px;
   font-weight: bold;
+  font-size: 18px;
   display: block;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
 `
 
 export const Descricao = styled.p`
@@ -25,7 +24,24 @@ export const Descricao = styled.p`
   line-height: 22px;
   display: block;
   margin-top: 16px;
+  margin-bottom: 16px;
 `
+export const Notes = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+`
+export const Avaiable = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  p {
+    margin-right: 8px;
+  }
+`
+
 export const Infos = styled.div`
   position: absolute;
   top: 16px;

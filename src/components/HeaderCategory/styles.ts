@@ -16,10 +16,3 @@ export const LogoEfood = styled.div`
     width: 125px;
   }
 `
-export const Title = styled.h1`
-  line-height: 42px;
-  text-align: center;
-  font-size: 36px;
-  padding-top: 138px;
-  font-weight: bold;
-`

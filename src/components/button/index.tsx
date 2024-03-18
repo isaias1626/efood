@@ -8,10 +8,10 @@ type Props = {
   children: string
 }
 
-const Button = ({ type, title, to, onClick, children }: Props) => {
+const Button = ({ title, type, to, onClick, children }: Props) => {
   if (type === 'button') {
     return (
-      <ButtonContainer type="button" title={title} onClick={onClick}>
+      <ButtonContainer title={title} onClick={onClick}>
         {children}
       </ButtonContainer>
     )

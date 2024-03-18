@@ -1,28 +1,28 @@
 class Game {
-  category: string
   description: string
   image: string
   infos: string[]
-  system: string
+  avaliation: number
   title: string
   id: number
+  category: string[]
 
   constructor(
-    category: string,
+    id: number,
     description: string,
     image: string,
     infos: string[],
-    system: string,
+    avaliation: number,
     title: string,
-    id: number
+    category: string[]
   ) {
     this.id = id
-    this.category = category
     this.description = description
     this.image = image
     this.infos = infos
-    this.system = system
+    this.avaliation = avaliation
     this.title = title
+    this.category = category
   }
 }
 

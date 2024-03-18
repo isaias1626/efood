@@ -1,34 +1,65 @@
+import {
+  Card,
+  CardItens,
+  Descricao,
+  Titulo,
+  Notes,
+  Avaiable,
+  Infos
+} from './styles'
+
+import Estrela from '../../Assets/image/estrela.svg'
 import Tag from '../Tag'
-import { Card, Descricao, Infos, Titulo } from './styles'
+import Button from '../Button'
 
 type Props = {
   title: string
-  category: string
-  system: string
   description: string
   infos: string[]
   image: string
+  avaliation: number
+  category: string[]
 }
 
 const Product = ({
   title,
-  category,
-  system,
   description,
   infos,
-  image
+  image,
+  avaliation,
+  category
 }: Props) => (
   <Card>
     <img src={image} alt={title} />
     <Infos>
       {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
+        <>
+          <Tag key={info}>{info}</Tag>
+        </>
+      ))}
+      {category.map((category) => (
+        <>
+          <Tag key={category}>{category}</Tag>
+        </>
       ))}
     </Infos>
-    <Titulo>{title}</Titulo>
-    <Tag>{category}</Tag>
-    <Tag>{system}</Tag>
-    <Descricao>{description}</Descricao>
+    <CardItens>
+      <Notes>
+        <Titulo>{title}</Titulo>
+        <Avaiable>
+          <p>{avaliation}</p>
+          <img src={Estrela} alt="estrela" />
+        </Avaiable>
+      </Notes>
+      <Descricao>{description}</Descricao>
+      <Button
+        type="link"
+        to="/categories"
+        title={'clique aqui para ver mais informações do produto'}
+      >
+        Saiba mais
+      </Button>
+    </CardItens>
   </Card>
 )
 
