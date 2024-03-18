@@ -12,7 +12,7 @@ import Estrela from '../../Assets/image/estrela.svg'
 import Tag from '../Tag'
 import Button from '../Button/index'
 
-type Props = {
+export type Props = {
   title: string
   description: string
   infos: string[]
