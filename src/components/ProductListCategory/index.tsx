@@ -1,24 +1,26 @@
+import { Producto } from '../../pages/Home'
 import Italiana from '../Category/italiana'
-import Category from '../../models/Category'
 import { List } from './styles'
 
 export type Props = {
-  categorys: Category[]
+  products: Producto[]
 }
 
-const ProductListCategory = ({ categorys }: Props) => (
-  <div className="container">
-    <List>
-      {categorys.map((category) => (
-        <Italiana
-          key={category.id}
-          title={category.title}
-          description={category.description}
-          image={category.image}
-        />
-      ))}
-    </List>
-  </div>
-)
+const ProductListCategory = ({ products }: Props) => {
+  return (
+    <div className="container">
+      <List>
+        {products.map((prd) => (
+          <Italiana
+            key={prd.id}
+            title={prd.titulo}
+            description={prd.descricao}
+            image={prd.capa}
+          />
+        ))}
+      </List>
+    </div>
+  )
+}
 
 export default ProductListCategory

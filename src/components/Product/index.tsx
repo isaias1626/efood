@@ -1,4 +1,4 @@
-import Button from '../../Assets/Button'
+import Button from '../Button'
 
 import {
   Card,
@@ -12,56 +12,55 @@ import {
 
 import Estrela from '../../Assets/image/estrela.svg'
 import Tag from '../Tag'
+import { Producto } from '../../pages/Home'
 
-export type Props = {
-  title: string
-  description: string
-  infos: string[]
-  image: string
-  avaliation: number
-  category: string[]
+type Props = {
+  titulo: string
+  descricao: string
+  destacado: string[]
+  foto: string
+  avaliacao: number
+  tipo: string[]
+  products?: Producto[]
 }
 
 const Product = ({
-  title,
-  description,
-  infos,
-  image,
-  avaliation,
-  category
-}: Props) => (
-  <Card>
-    <img src={image} alt={title} />
-    <Infos>
-      {infos.map((info) => (
-        <>
-          <Tag key={info}>{info}</Tag>
-        </>
-      ))}
-      {category.map((category) => (
-        <>
-          <Tag key={category}>{category}</Tag>
-        </>
-      ))}
-    </Infos>
-    <CardItens>
-      <Notes>
-        <Titulo>{title}</Titulo>
-        <Avaiable>
-          <p>{avaliation}</p>
-          <img src={Estrela} alt="estrela" />
-        </Avaiable>
-      </Notes>
-      <Descricao>{description}</Descricao>
-      <Button
-        type="link"
-        to="/categories"
-        title={'clique aqui para ver mais informações do produto'}
-      >
-        Saiba mais
-      </Button>
-    </CardItens>
-  </Card>
-)
+  titulo,
+  descricao,
+  destacado,
+  foto,
+  avaliacao,
+  products
+}: Props) => {
+  return (
+    <Card>
+      <img src={foto} alt={titulo} />
+      <Infos>
+        {destacado.map((destacados) => (
+          <>
+            <Tag key={destacados}>{destacados}</Tag>
+          </>
+        ))}
+      </Infos>
+      <CardItens>
+        <Notes>
+          <Titulo>{titulo}</Titulo>
+          <Avaiable>
+            <p>{avaliacao}</p>
+            <img src={Estrela} alt="estrela" />
+          </Avaiable>
+        </Notes>
+        <Descricao>{descricao}</Descricao>
+        <Button
+          type="link"
+          to="/italiana"
+          title={'clique aqui para ver mais informações do produto'}
+        >
+          Saiba mais
+        </Button>
+      </CardItens>
+    </Card>
+  )
+}
 
 export default Product

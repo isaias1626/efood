@@ -17,7 +17,7 @@ const Rotas = () => (
       }
     />
     <Route
-      path="/categories"
+      path="/italiana"
       element={
         <>
           <HeaderCategory />
