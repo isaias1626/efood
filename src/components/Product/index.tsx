@@ -13,47 +13,68 @@ import {
 import Estrela from '../../Assets/image/estrela.svg'
 import Tag from '../Tag'
 import { Producto } from '../../pages/Home'
+import { useEffect, useState } from 'react'
 
-type Props = {
-  titulo: string
-  descricao: string
-  destacado: string[]
-  foto: string
-  avaliacao: number
-  tipo: string[]
-  products?: Producto[]
+export type Props = {
+  title: string
+  description: string
+  infos: string[]
+  image: string
+  avaliation: number
+  category: string
+  id: number
+  destacted: string
 }
 
 const Product = ({
-  titulo,
-  descricao,
-  destacado,
-  foto,
-  avaliacao,
-  products
+  title,
+  description,
+  infos,
+  image,
+  avaliation,
+  id
 }: Props) => {
+  const [product, setProduct] = useState<Producto>()
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((res) => res.json())
+      .then((res) => setProduct(res))
+  }, [])
+
+  if (!product) {
+    return <h3>Carregando...</h3>
+  }
+
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 248) {
+      return descricao.slice(0, 245) + '...'
+    }
+    return descricao
+  }
+
   return (
     <Card>
-      <img src={foto} alt={titulo} />
+      <img src={image} alt={title} />
       <Infos>
-        {destacado.map((destacados) => (
+        {infos.map((infos) => (
           <>
-            <Tag key={destacados}>{destacados}</Tag>
+            <Tag key={infos}>{infos}</Tag>
           </>
         ))}
       </Infos>
       <CardItens>
         <Notes>
-          <Titulo>{titulo}</Titulo>
+          <Titulo>{title}</Titulo>
           <Avaiable>
-            <p>{avaliacao}</p>
+            <p>{avaliation}</p>
             <img src={Estrela} alt="estrela" />
           </Avaiable>
         </Notes>
-        <Descricao>{descricao}</Descricao>
+        <Descricao>{getDescricao(description)}</Descricao>
         <Button
           type="link"
-          to="/italiana"
+          to={`/categories/${id}`}
           title={'clique aqui para ver mais informações do produto'}
         >
           Saiba mais

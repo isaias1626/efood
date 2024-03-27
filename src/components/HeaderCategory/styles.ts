@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import Fundo from '../../Assets/image/fundo.png'
-import FundoCategory from '../../Assets/image/imagem_fundo.png'
 import { cores } from '../../styles'
 
 export const HeaderStyle = styled.header`
@@ -22,6 +21,12 @@ export const LogoEfood = styled.div`
   font-weight: 900;
   font-size: 18px;
 
+  .link {
+    list-style: none;
+    text-decoration: none;
+    color: ${cores.laranja};
+  }
+
   img {
     width: 125px;
     margin-left: 85px;
@@ -29,8 +34,14 @@ export const LogoEfood = styled.div`
 `
 export const FundoCategories = styled.div`
   display: flex;
-  background-image: url(${FundoCategory});
-  height: 280px;
+
+  .header-categories-config {
+    height: 280px;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    background-size: cover;
+  }
 `
 export const Textos = styled.div`
   display: block;

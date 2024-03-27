@@ -6,6 +6,13 @@ export const Card = styled.div`
   border: 1px solid ${cores.laranja};
   position: relative;
   margin-bottom: 48px;
+
+  > img {
+    width: 472px;
+    height: 217px;
+    max-width: 100%;
+    object-fit: cover;
+  }
 `
 export const CardItens = styled.div`
   padding: 8px 8px;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { cores } from '../../../styles'
-import { ButtonContainer } from '../../Button/styles'
+import { cores } from '../../styles'
+import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
   background-color: ${cores.laranja};
@@ -12,7 +12,13 @@ export const Card = styled.div`
 
 export const Image = styled.div`
   padding: 8px;
-  width: 304px;
+
+  img {
+    height: 167px;
+    width: 304px;
+    max-width: 304px;
+    object-fit: cover;
+  }
 `
 export const CardItens = styled.div`
   padding: 0 8px;
@@ -75,6 +81,12 @@ export const ModalProduct = styled.div`
   position: relative;
   z-index: 1;
 
+  img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+  }
+
   h4 {
     font-size: 18px;
     font-weight: bold;
@@ -89,7 +101,7 @@ export const ModalProduct = styled.div`
   ${ButtonContainer} {
     background-color: ${cores.amarelo};
     padding: 4px 7px;
-    width: 218px;
+    width: 228px;
     height: 24px;
     color: ${cores.laranja};
     font-size: 14px;

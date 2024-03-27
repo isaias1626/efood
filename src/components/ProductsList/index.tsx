@@ -7,13 +7,6 @@ export type Props = {
 }
 
 const ProdutctsList = ({ products }: Props) => {
-  const formataPreco = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(preco)
-  }
-
   const getProductTags = (prd: Producto) => {
     const tags = []
 
@@ -21,8 +14,8 @@ const ProdutctsList = ({ products }: Props) => {
       tags.push(prd.destacado)
     }
 
-    if (prd.cardapio.preco) {
-      tags.push(formataPreco(prd.cardapio.preco))
+    if (prd.tipo) {
+      tags.push(prd.tipo)
     }
 
     return tags
@@ -33,15 +26,18 @@ const ProdutctsList = ({ products }: Props) => {
       <div className="container">
         <List>
           {products.map((prd) => (
-            <Product
-              key={prd.id}
-              descricao={prd.cardapio.descricao}
-              foto={prd.cardapio.foto}
-              destacado={getProductTags(prd)}
-              tipo={prd.tipo}
-              avaliacao={prd.avaliacao}
-              titulo={prd.cardapio.nome}
-            />
+            <li key={prd.id}>
+              <Product
+                description={prd.descricao}
+                image={prd.capa}
+                infos={getProductTags(prd)}
+                category={prd.tipo}
+                avaliation={prd.avaliacao}
+                title={prd.titulo}
+                id={prd.id}
+                destacted={prd.destacado}
+              />
+            </li>
           ))}
         </List>
       </div>

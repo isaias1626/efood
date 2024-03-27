@@ -1,22 +1,48 @@
-import { Producto } from '../../pages/Home'
-import Italiana from '../Category/italiana'
+import { useEffect, useState } from 'react'
 import { List } from './styles'
+import { useParams } from 'react-router-dom'
+import { Producto } from '../../pages/Home'
+import Category from '../Category'
 
-export type Props = {
+type Props = {
   products: Producto[]
 }
 
 const ProductListCategory = ({ products }: Props) => {
+  const { id } = useParams()
+
+  const [product, setProduct] = useState<Producto>()
+
+  const formataPreco = (preco: number) => {
+    return new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(
+      preco
+    )
+  }
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setProduct(res))
+  }, [id])
+
+  if (!product) {
+    return <h3>Carregando...</h3>
+  }
+
   return (
     <div className="container">
       <List>
-        {products.map((prd) => (
-          <Italiana
-            key={prd.id}
-            title={prd.titulo}
-            description={prd.descricao}
-            image={prd.capa}
-          />
+        {product.cardapio.map((item) => (
+          <li key={item.id}>
+            <Category
+              title={item.nome}
+              description={item.descricao}
+              image={item.foto}
+              id={item.id}
+              serv={item.porcao}
+              price={formataPreco(item.preco)}
+            />
+          </li>
         ))}
       </List>
     </div>
