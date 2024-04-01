@@ -39,7 +39,6 @@ export const FundoCategories = styled.div`
     height: 280px;
     width: 100%;
     max-width: 100%;
-    object-fit: cover;
     background-size: cover;
   }
 `
@@ -53,7 +52,7 @@ export const Textos = styled.div`
     font-weight: 100;
     margin-top: 25px;
     margin-bottom: 156px;
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
   h3 {

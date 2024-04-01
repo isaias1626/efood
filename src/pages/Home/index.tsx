@@ -7,7 +7,7 @@ export type Producto = {
   infos: string[]
   id: number
   titulo: string
-  destacado: string
+  destacado: boolean
   tipo: string
   avaliacao: number
   descricao: string

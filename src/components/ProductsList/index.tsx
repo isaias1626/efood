@@ -10,10 +10,6 @@ const ProdutctsList = ({ products }: Props) => {
   const getProductTags = (prd: Producto) => {
     const tags = []
 
-    if (prd.destacado) {
-      tags.push(prd.destacado)
-    }
-
     if (prd.tipo) {
       tags.push(prd.tipo)
     }
@@ -35,7 +31,7 @@ const ProdutctsList = ({ products }: Props) => {
                 avaliation={prd.avaliacao}
                 title={prd.titulo}
                 id={prd.id}
-                destacted={prd.destacado}
+                destacado={prd.destacado}
               />
             </li>
           ))}

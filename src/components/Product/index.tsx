@@ -1,5 +1,4 @@
 import Button from '../Button'
-
 import {
   Card,
   CardItens,
@@ -23,7 +22,7 @@ export type Props = {
   avaliation: number
   category: string
   id: number
-  destacted: string
+  destacado: boolean
 }
 
 const Product = ({
@@ -32,7 +31,8 @@ const Product = ({
   infos,
   image,
   avaliation,
-  id
+  id,
+  destacado
 }: Props) => {
   const [product, setProduct] = useState<Producto>()
 
@@ -57,10 +57,9 @@ const Product = ({
     <Card>
       <img src={image} alt={title} />
       <Infos>
+        {destacado && <Tag>Destaque do Dia</Tag>}{' '}
         {infos.map((infos) => (
-          <>
-            <Tag key={infos}>{infos}</Tag>
-          </>
+          <Tag key={infos}>{infos}</Tag>
         ))}
       </Infos>
       <CardItens>

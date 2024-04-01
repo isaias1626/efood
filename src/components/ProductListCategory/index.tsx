@@ -4,11 +4,7 @@ import { useParams } from 'react-router-dom'
 import { Producto } from '../../pages/Home'
 import Category from '../Category'
 
-type Props = {
-  products: Producto[]
-}
-
-const ProductListCategory = ({ products }: Props) => {
+const ProductListCategory = () => {
   const { id } = useParams()
 
   const [product, setProduct] = useState<Producto>()
