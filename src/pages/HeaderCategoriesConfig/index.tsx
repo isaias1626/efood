@@ -9,13 +9,13 @@ type Props = {
 const HeaderCategoriesConfig = ({ products }: Props) => {
   const { id } = useParams<{ id: string }>()
 
-  if (!products) {
-    return <h3>Carregando...</h3>
-  }
-
   const filteredProducts = id
     ? products.filter((prd) => prd.id === parseInt(id))
     : []
+
+  if (!products) {
+    return <h3>Carregando...</h3>
+  }
 
   return (
     <div>

@@ -11,8 +11,8 @@ import {
 
 import Estrela from '../../Assets/image/estrela.svg'
 import Tag from '../Tag'
-import { Producto } from '../../pages/Home'
-import { useEffect, useState } from 'react'
+
+import { useGetRestaurantQuery } from '../../services/api'
 
 export type Props = {
   title: string
@@ -34,13 +34,7 @@ const Product = ({
   id,
   destacado
 }: Props) => {
-  const [product, setProduct] = useState<Producto>()
-
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setProduct(res))
-  }, [])
+  const { data: product } = useGetRestaurantQuery()
 
   if (!product) {
     return <h3>Carregando...</h3>

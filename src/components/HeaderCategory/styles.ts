@@ -25,6 +25,10 @@ export const LogoEfood = styled.div`
     list-style: none;
     text-decoration: none;
     color: ${cores.laranja};
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   img {
@@ -66,5 +70,12 @@ export const Textos = styled.div`
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
+  }
+`
+export const CartButton = styled.ul`
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
   }
 `

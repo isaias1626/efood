@@ -1,29 +1,24 @@
-import {
-  Card,
-  Image,
-  CardItens,
-  Button,
-  Modal,
-  Close,
-  ModalProduct
-} from './styles'
+import { useState } from 'react'
+import { useGetProductQuery } from '../../services/api'
+import { useParams } from 'react-router-dom'
 
-import imagePopup from '../../Assets/image/image_popup.png'
+import { Card, Image, CardItens, Button, Modal, Close } from './styles'
 import close from '../../Assets/image/close_1.svg'
-import { ButtonContainer } from '../Button/styles'
-import { useEffect, useState } from 'react'
-import { Producto } from '../../pages/Home'
+
+import ModalInfos from '../Modal'
 
 export type Props = {
   title: string
   description: string
   image: string
-  id: number
   serv: string
-  price: string
+  price: number
 }
 
-const Category = ({ title, description, image, serv, price }: Props) => {
+const Category = ({ title, description, image }: Props) => {
+  const { id } = useParams()
+  const { data: product } = useGetProductQuery(id!)
+
   const getDescricao = (descricao: string) => {
     if (descricao.length > 100) {
       return descricao.slice(0, 103) + '...'
@@ -32,6 +27,12 @@ const Category = ({ title, description, image, serv, price }: Props) => {
   }
 
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
+
+  if (!product) {
+    return <h3>Produto não encontrado.</h3>
+  }
+
+  console.log(product)
 
   return (
     <>
@@ -65,20 +66,18 @@ const Category = ({ title, description, image, serv, price }: Props) => {
                 onClick={() => setModalEstaAberto(false)}
               />
             </Close>
-            <ModalProduct>
-              <div>
-                <img src={image} alt="imagem do produto" />
-              </div>
-              <div>
-                <h4>{title}</h4>
-                <p>
-                  {description} <br /> <br /> <br /> Serve: de {serv}
-                </p>
-                <ButtonContainer>
-                  Adicionar ao carrinho - <span>R$: {price}</span>
-                </ButtonContainer>
-              </div>
-            </ModalProduct>
+            {modalEstaAberto &&
+              product.cardapio.map((item) => (
+                <div key={item.id}>
+                  <ModalInfos
+                    title={item.nome}
+                    description={item.descricao}
+                    image={item.foto}
+                    serv={item.porcao}
+                    price={item.preco}
+                  />
+                </div>
+              ))}
           </div>
           <div
             className="overlay"

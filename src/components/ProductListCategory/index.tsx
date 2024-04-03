@@ -1,28 +1,28 @@
 import { useEffect, useState } from 'react'
-import { List } from './styles'
+import { List, Loader } from './styles'
 import { useParams } from 'react-router-dom'
-import { Producto } from '../../pages/Home'
 import Category from '../Category'
+import { useGetProductQuery } from '../../services/api'
 
 const ProductListCategory = () => {
   const { id } = useParams()
-
-  const [product, setProduct] = useState<Producto>()
-
-  const formataPreco = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(
-      preco
-    )
-  }
+  const { data: product } = useGetProductQuery(id!)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setProduct(res))
-  }, [id])
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (loading) {
+    return <Loader className="loader"></Loader>
+  }
 
   if (!product) {
-    return <h3>Carregando...</h3>
+    return <h3>Produto não encontrado.</h3>
   }
 
   return (
@@ -34,9 +34,8 @@ const ProductListCategory = () => {
               title={item.nome}
               description={item.descricao}
               image={item.foto}
-              id={item.id}
               serv={item.porcao}
-              price={formataPreco(item.preco)}
+              price={item.preco}
             />
           </li>
         ))}

@@ -1,6 +1,16 @@
 import { Link } from 'react-router-dom'
 import Logo from '../../Assets/image/logo.svg'
-import { FundoCategories, HeaderStyle, LogoEfood, Textos } from './styles'
+import {
+  FundoCategories,
+  HeaderStyle,
+  LogoEfood,
+  Textos,
+  CartButton
+} from './styles'
+
+import { open } from '../../store/reducers/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 export type Props = {
   titlePage: string
@@ -9,6 +19,14 @@ export type Props = {
 }
 
 const HeaderCategory = ({ titlePage, subtitlePage, image }: Props) => {
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const dispath = useDispatch()
+
+  const openCart = () => {
+    dispath(open())
+  }
+
   return (
     <HeaderStyle>
       <div className="container">
@@ -21,9 +39,9 @@ const HeaderCategory = ({ titlePage, subtitlePage, image }: Props) => {
           <Link to="/">
             <img src={Logo} alt="efood" />
           </Link>
-          <ul>
-            <li>0 produto(s) no carrinho</li>
-          </ul>
+          <CartButton onClick={openCart}>
+            <li>{items.length} produto(s) no carrinho</li>
+          </CartButton>
         </LogoEfood>
       </div>
       <FundoCategories>
