@@ -2,10 +2,21 @@ import { useState } from 'react'
 import { useGetProductQuery } from '../../services/api'
 import { useParams } from 'react-router-dom'
 
-import { Card, Image, CardItens, Button, Modal, Close } from './styles'
-import close from '../../Assets/image/close_1.svg'
+import {
+  Card,
+  Image,
+  CardItens,
+  Button,
+  Modal,
+  Close,
+  ModalProduct
+} from './styles'
 
-import ModalInfos from '../Modal'
+import close from '../../Assets/image/close_1.svg'
+import { ButtonContainer } from '../Button/styles'
+import { useDispatch } from 'react-redux'
+import { add } from '../../store/reducers/cart'
+import { Producto } from '../../pages/Home'
 
 export type Props = {
   title: string
@@ -15,9 +26,18 @@ export type Props = {
   price: number
 }
 
-const Category = ({ title, description, image }: Props) => {
-  const { id } = useParams()
-  const { data: product } = useGetProductQuery(id!)
+const Category = ({ title, description, image, serv, price }: Props) => {
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add())
+  }
+
+  const formataPreco = (preco: number) => {
+    return new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(
+      preco
+    )
+  }
 
   const getDescricao = (descricao: string) => {
     if (descricao.length > 100) {
@@ -27,12 +47,6 @@ const Category = ({ title, description, image }: Props) => {
   }
 
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
-
-  if (!product) {
-    return <h3>Produto não encontrado.</h3>
-  }
-
-  console.log(product)
 
   return (
     <>
@@ -66,18 +80,23 @@ const Category = ({ title, description, image }: Props) => {
                 onClick={() => setModalEstaAberto(false)}
               />
             </Close>
-            {modalEstaAberto &&
-              product.cardapio.map((item) => (
-                <div key={item.id}>
-                  <ModalInfos
-                    title={item.nome}
-                    description={item.descricao}
-                    image={item.foto}
-                    serv={item.porcao}
-                    price={item.preco}
-                  />
-                </div>
-              ))}
+            <ModalProduct>
+              <div>
+                <img src={image} alt="imagem do produto" />
+              </div>
+              <div>
+                <h4>{title}</h4>
+                <p>
+                  {description} <br /> <br /> <br /> Serve: {serv}
+                </p>
+                <ButtonContainer
+                  onClick={addToCart}
+                  title="Clique aqui para adicionar ao carrinho"
+                >
+                  Adicionar ao carrinho - <span>R$: {formataPreco(price)}</span>
+                </ButtonContainer>
+              </div>
+            </ModalProduct>
           </div>
           <div
             className="overlay"
