@@ -5,8 +5,6 @@ import { Loader } from '../../components/ProductListCategory/styles'
 import ProdutctsList from '../../components/ProductsList'
 
 export type Producto = {
-  category: string
-  avaliation: number
   infos: string[]
   id: number
   titulo: string

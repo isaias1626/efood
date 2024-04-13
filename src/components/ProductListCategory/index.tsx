@@ -28,17 +28,7 @@ const ProductListCategory = () => {
   return (
     <div className="container">
       <List>
-        {product.cardapio.map((item) => (
-          <li key={item.id}>
-            <Category
-              title={item.nome}
-              description={item.descricao}
-              image={item.foto}
-              serv={item.porcao}
-              price={item.preco}
-            />
-          </li>
-        ))}
+        <Category products={product} />
       </List>
     </div>
   )

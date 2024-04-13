@@ -15,22 +15,22 @@ import Tag from '../Tag'
 import { useGetRestaurantQuery } from '../../services/api'
 
 export type Props = {
-  title: string
-  description: string
+  titulo: string
+  descricao: string
   infos: string[]
-  image: string
-  avaliation: number
-  category: string
+  capa: string
+  avaliacao: number
+  tipo: string
   id: number
   destacado: boolean
 }
 
 const Product = ({
-  title,
-  description,
+  titulo,
+  descricao,
   infos,
-  image,
-  avaliation,
+  capa,
+  avaliacao,
   id,
   destacado
 }: Props) => {
@@ -49,7 +49,7 @@ const Product = ({
 
   return (
     <Card>
-      <img src={image} alt={title} />
+      <img src={capa} alt={titulo} />
       <Infos>
         {destacado && <Tag>Destaque do Dia</Tag>}{' '}
         {infos.map((infos) => (
@@ -58,13 +58,13 @@ const Product = ({
       </Infos>
       <CardItens>
         <Notes>
-          <Titulo>{title}</Titulo>
+          <Titulo>{titulo}</Titulo>
           <Avaiable>
-            <p>{avaliation}</p>
+            <p>{avaliacao}</p>
             <img src={Estrela} alt="estrela" />
           </Avaiable>
         </Notes>
-        <Descricao>{getDescricao(description)}</Descricao>
+        <Descricao>{getDescricao(descricao)}</Descricao>
         <Button
           type="link"
           to={`/categories/${id}`}

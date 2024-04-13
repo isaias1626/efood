@@ -24,12 +24,12 @@ const ProdutctsList = ({ products }: Props) => {
           {products.map((prd) => (
             <li key={prd.id}>
               <Product
-                description={prd.descricao}
-                image={prd.capa}
+                descricao={prd.descricao}
+                capa={prd.capa}
                 infos={getProductTags(prd)}
-                category={prd.tipo}
-                avaliation={prd.avaliacao}
-                title={prd.titulo}
+                tipo={prd.tipo}
+                avaliacao={prd.avaliacao}
+                titulo={prd.titulo}
                 id={prd.id}
                 destacado={prd.destacado}
               />

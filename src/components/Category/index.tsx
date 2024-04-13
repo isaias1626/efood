@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import { useGetProductQuery } from '../../services/api'
-import { useParams } from 'react-router-dom'
-
 import {
   Card,
   Image,
@@ -15,22 +12,20 @@ import {
 import close from '../../Assets/image/close_1.svg'
 import { ButtonContainer } from '../Button/styles'
 import { useDispatch } from 'react-redux'
-import { add } from '../../store/reducers/cart'
+import { add, open } from '../../store/reducers/cart'
 import { Producto } from '../../pages/Home'
 
 export type Props = {
-  title: string
-  description: string
-  image: string
-  serv: string
-  price: number
+  products: Producto
 }
 
-const Category = ({ title, description, image, serv, price }: Props) => {
+const Category = ({ products }: Props) => {
   const dispatch = useDispatch()
 
-  const addToCart = () => {
-    dispatch(add())
+  const addToCart = (item: Producto) => {
+    // Corrigido o tipo do parâmetro item
+    dispatch(add(item)) // Agora estamos passando um objeto do tipo Producto para a função add
+    dispatch(open())
   }
 
   const formataPreco = (preco: number) => {
@@ -46,64 +41,64 @@ const Category = ({ title, description, image, serv, price }: Props) => {
     return descricao
   }
 
-  const [modalEstaAberto, setModalEstaAberto] = useState(false)
+  const [modalIndex, setModalIndex] = useState(-1)
 
   return (
     <>
-      <div className="container">
-        <ul>
-          <li>
-            <Card>
-              <Image>
-                <img src={image} alt="s" />
-              </Image>
-              <CardItens>
-                <h4>{title}</h4>
-                <p>{getDescricao(description)}</p>
-                <Button
-                  onClick={() => setModalEstaAberto(true)}
-                  type="button"
-                  title={'clique aqui para ver mais informações do produto'}
-                >
-                  Adicionar ao carrinho
-                </Button>
-              </CardItens>
-            </Card>
-          </li>
-        </ul>
-        <Modal className={modalEstaAberto ? 'visivel' : ''}>
-          <div className="container">
-            <Close>
-              <img
-                src={close}
-                alt="icone de fechar"
-                onClick={() => setModalEstaAberto(false)}
-              />
-            </Close>
-            <ModalProduct>
-              <div>
-                <img src={image} alt="imagem do produto" />
-              </div>
-              <div>
-                <h4>{title}</h4>
-                <p>
-                  {description} <br /> <br /> <br /> Serve: {serv}
-                </p>
-                <ButtonContainer
-                  onClick={addToCart}
-                  title="Clique aqui para adicionar ao carrinho"
-                >
-                  Adicionar ao carrinho - <span>R$: {formataPreco(price)}</span>
-                </ButtonContainer>
-              </div>
-            </ModalProduct>
-          </div>
-          <div
-            className="overlay"
-            onClick={() => setModalEstaAberto(false)}
-          ></div>
-        </Modal>
-      </div>
+      {products.cardapio.map((item, index) => (
+        <div className="container" key={index}>
+          <ul>
+            <li>
+              <Card>
+                <Image>
+                  <img src={item.foto} alt="s" />
+                </Image>
+                <CardItens>
+                  <h4>{item.nome}</h4>
+                  <p>{getDescricao(item.descricao)}</p>
+                  <Button
+                    onClick={() => setModalIndex(index)}
+                    type="button"
+                    title={'clique aqui para ver mais informações do produto'}
+                  >
+                    Adicionar ao carrinho
+                  </Button>
+                </CardItens>
+              </Card>
+            </li>
+          </ul>
+          <Modal className={modalIndex === index ? 'visivel' : ''}>
+            <div className="container">
+              <Close>
+                <img
+                  src={close}
+                  alt="icone de fechar"
+                  onClick={() => setModalIndex(-1)}
+                />
+              </Close>
+              <ModalProduct>
+                <div>
+                  <img src={item.foto} alt="imagem do produto" />
+                </div>
+                <div>
+                  <h4>{item.nome}</h4>
+                  <p>
+                    {item.descricao} <br /> <br /> <br /> Serve: {item.porcao}
+                  </p>
+                  <ButtonContainer
+                    onClick={() => addToCart({ ...products, cardapio: [item] })} // Passando um objeto Produto com a estrutura correta
+                    title="Clique aqui para adicionar ao carrinho"
+                  >
+                    Adicionar ao carrinho -{' '}
+                    <span>R$: {formataPreco(item.preco)}</span>
+                  </ButtonContainer>
+                </div>
+              </ModalProduct>
+              <div className="overlay" onClick={() => setModalIndex(-1)}></div>
+            </div>
+          </Modal>
+        </div>
+      ))}
     </>
   )
 }

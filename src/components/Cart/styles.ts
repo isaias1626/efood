@@ -42,6 +42,8 @@ export const Sidebar = styled.aside`
   padding: 32px 8px 0 8px;
   max-width: 360px;
   width: 100%;
+  overflow-y: auto;
+  padding-bottom: 40px;
 `
 export const TotalPrice = styled.div`
   display: flex;
