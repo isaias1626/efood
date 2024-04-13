@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import Fundo from '../../Assets/image/fundo.png'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const HeaderStyle = styled.header`
   background-image: url(${Fundo});
@@ -9,6 +9,10 @@ export const HeaderStyle = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 56px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 `
 
 export const LogoEfood = styled.div`

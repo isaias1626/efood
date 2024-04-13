@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 import lixeira from '../../Assets/image/lixeira-de-reciclagem_1.svg'
@@ -44,6 +44,10 @@ export const Sidebar = styled.aside`
   width: 100%;
   overflow-y: auto;
   padding-bottom: 40px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 260px;
+  }
 `
 export const TotalPrice = styled.div`
   display: flex;

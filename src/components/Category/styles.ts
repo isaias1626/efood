@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
@@ -8,6 +8,10 @@ export const Card = styled.div`
   width: 320px;
   height: auto;
   margin-bottom: 32px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: auto;
+  }
 `
 
 export const Image = styled.div`
@@ -15,8 +19,8 @@ export const Image = styled.div`
 
   img {
     height: 167px;
-    width: 304px;
-    max-width: 304px;
+    width: 100%;
+    max-width: 100%;
     object-fit: cover;
   }
 `
@@ -38,11 +42,15 @@ export const CardItens = styled.div`
 export const Button = styled.button`
   width: 100%;
   margin-bottom: 8px;
-  padding: 4px 84px;
+  padding: 4px 8px;
   background-color: ${cores.amarelo};
   color: ${cores.laranja};
   border: none;
   cursor: pointer;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    font-size: 12px;
+  }
 
   &:hover {
     background-color: ${cores.amareloClaro};
@@ -96,6 +104,24 @@ export const ModalProduct = styled.div`
   p {
     font-size: 14px;
     margin-bottom: 16px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: block;
+
+    h4 {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    img {
+      width: 100%;
+    }
   }
 
   ${ButtonContainer} {
