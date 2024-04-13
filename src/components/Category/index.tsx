@@ -23,8 +23,7 @@ const Category = ({ products }: Props) => {
   const dispatch = useDispatch()
 
   const addToCart = (item: Producto) => {
-    // Corrigido o tipo do parâmetro item
-    dispatch(add(item)) // Agora estamos passando um objeto do tipo Producto para a função add
+    dispatch(add(item))
     dispatch(open())
   }
 
@@ -86,7 +85,7 @@ const Category = ({ products }: Props) => {
                     {item.descricao} <br /> <br /> <br /> Serve: {item.porcao}
                   </p>
                   <ButtonContainer
-                    onClick={() => addToCart({ ...products, cardapio: [item] })} // Passando um objeto Produto com a estrutura correta
+                    onClick={() => addToCart({ ...products, cardapio: [item] })}
                     title="Clique aqui para adicionar ao carrinho"
                   >
                     Adicionar ao carrinho -{' '}

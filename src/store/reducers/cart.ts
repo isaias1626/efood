@@ -30,11 +30,9 @@ const cartSlice = createSlice({
     },
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => {
-        // Verifica se algum item em 'cardapio' tem o ID igual ao ID fornecido na ação
         const isItemInCardapio = item.cardapio.some(
           (produto) => produto.id === action.payload
         )
-        // Retorna true se o item não contém o ID que está sendo removido
         return !isItemInCardapio
       })
     },
