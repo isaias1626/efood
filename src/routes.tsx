@@ -5,6 +5,7 @@ import Categories from './pages/Categories'
 import Header from './components/Header'
 import HeaderCategoriesConfig from './pages/HeaderCategoriesConfig'
 import { useEffect, useState } from 'react'
+import Checkout from './pages/Checkout'
 
 const Rotas = () => {
   const [produtos, setProdutos] = useState<Producto[]>([])
@@ -35,6 +36,7 @@ const Rotas = () => {
           </>
         }
       />
+      <Route path="/checkout" element={<Checkout />} />
     </Routes>
   )
 }
