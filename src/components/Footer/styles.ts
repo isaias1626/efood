@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { color } from '../../styles'
 
 export const FooterBack = styled.div`
-  background-color: ${cores.amarelo};
+  background-color: ${color.yellow};
   height: 298px;
   margin-top: 88px;
+  bottom: 0;
 `
 
 export const Logo = styled.div`
@@ -29,7 +30,7 @@ export const Sociais = styled.ul`
     margin-right: 4px;
   }
 `
-export const Texto = styled.p`
+export const Text = styled.p`
   display: block;
   text-align: center;
   justify-content: center;

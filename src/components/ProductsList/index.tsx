@@ -1,6 +1,6 @@
-import { Producto } from '../../pages/Home'
 import Product from '../Product'
-import { List, Container } from './styles'
+
+import * as S from './styles'
 
 export type Props = {
   products: Producto[]
@@ -18,9 +18,9 @@ const ProdutctsList = ({ products }: Props) => {
   }
 
   return (
-    <Container>
+    <S.Container>
       <div className="container">
-        <List>
+        <S.List>
           {products.map((prd) => (
             <li key={prd.id}>
               <Product
@@ -35,9 +35,9 @@ const ProdutctsList = ({ products }: Props) => {
               />
             </li>
           ))}
-        </List>
+        </S.List>
       </div>
-    </Container>
+    </S.Container>
   )
 }
 

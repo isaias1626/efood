@@ -1,29 +1,8 @@
 import { useEffect, useState } from 'react'
+
 import { useGetRestaurantQuery } from '../../services/api'
-import { Loader } from '../../components/ProductListCategory/styles'
-
 import ProdutctsList from '../../components/ProductsList'
-
-export type Producto = {
-  infos: string[]
-  id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  capa: string
-  cardapio: [
-    {
-      foto: string
-      preco: number
-      id: number
-      nome: string
-      descricao: string
-      porcao: string
-    }
-  ]
-}
+import Loader from '../../components/Loader'
 
 const Home = () => {
   const { data: product } = useGetRestaurantQuery()
@@ -38,7 +17,7 @@ const Home = () => {
   }, [])
 
   if (loading) {
-    return <Loader></Loader>
+    return <Loader />
   }
 
   return <>{product && <ProdutctsList products={product} />}</>

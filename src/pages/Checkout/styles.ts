@@ -1,50 +1,133 @@
 import styled from 'styled-components'
+import { color } from '../../styles'
 import { ButtonContainer } from '../../components/Button/styles'
-import { breakpoints, cores } from '../../styles'
 
-export const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.8;
-`
-export const CardContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: flex-end;
-  z-index: 1;
+export const ImputGroup = styled.div`
+  display: block;
 
-  &.is-open {
-    display: flex;
+  input {
+    width: 100%;
+    height: 32px;
+    margin: 8px 0 8px;
+    background-color: ${color.yellow};
+    border: solid 1px ${color.yellow};
+    padding: 0 8px;
+    outline: none;
+
+    &.error {
+      border: 1px solid red;
+      color: red;
+    }
   }
 
-  ${ButtonContainer} {
-    background-color: ${cores.amarelo};
-    color: ${cores.laranja};
-    cursor: pointer;
+  label {
+    display: flex;
+    width: 100%;
     font-size: 14px;
     font-weight: 700;
-    text-align: center;
   }
 `
 
-export const Sidebar = styled.aside`
-  background-color: ${cores.laranja};
-  z-index: 1;
-  padding: 32px 8px 0 8px;
-  max-width: 360px;
-  width: 100%;
-  overflow-y: auto;
-  padding-bottom: 40px;
+export const Column = styled.div`
+  padding-left: 8px;
+  padding-right: 8px;
+`
+export const Row = styled.div`
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  justify-content: space-between;
+`
+export const InputGroupTwo = styled.div`
+  input {
+    width: 155px;
+    height: 32px;
+    margin: 8px 0 8px;
+    background-color: ${color.yellow};
+    border: solid 1px ${color.yellow};
+    padding: 0 8px;
+    outline: none;
 
-  @media (max-width: ${breakpoints.tablet}) {
-    max-width: 260px;
+    &.error {
+      border: 1px solid red;
+      color: red;
+    }
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+  }
+`
+
+export const Buttons = styled.div`
+  margin-top: 24px;
+
+  ${ButtonContainer} {
+    background-color: ${color.yellow};
+    color: ${color.orange};
+    border: none;
+    height: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+`
+export const ContainerText = styled.div`
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 400;
+
+  P {
+    margin-bottom: 24px;
+  }
+`
+
+export const InputGroupCardNumber = styled.div`
+  input {
+    width: 228px;
+    height: 32px;
+    margin: 8px 0 8px;
+    background-color: ${color.yellow};
+    border: solid 1px ${color.yellow};
+    padding: 0 8px;
+    outline: none;
+
+    &.error {
+      border: 1px solid red;
+      color: red;
+    }
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+  }
+`
+export const InputGroupCardCvv = styled.div`
+  input {
+    width: 87px;
+    height: 32px;
+    margin: 8px 0 8px;
+    background-color: ${color.yellow};
+    border: solid 1px ${color.yellow};
+    padding: 0 8px;
+    outline: none;
+
+    &.error {
+      border: 1px solid red;
+      color: red;
+    }
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
   }
 `

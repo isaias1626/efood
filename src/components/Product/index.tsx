@@ -1,18 +1,10 @@
 import Button from '../Button'
-import {
-  Card,
-  CardItens,
-  Descricao,
-  Titulo,
-  Notes,
-  Avaiable,
-  Infos
-} from './styles'
-
 import Estrela from '../../Assets/image/estrela.svg'
 import Tag from '../Tag'
-
 import { useGetRestaurantQuery } from '../../services/api'
+import Loader from '../Loader'
+
+import * as S from './styles'
 
 export type Props = {
   titulo: string
@@ -37,7 +29,7 @@ const Product = ({
   const { data: product } = useGetRestaurantQuery()
 
   if (!product) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   const getDescricao = (descricao: string) => {
@@ -48,23 +40,23 @@ const Product = ({
   }
 
   return (
-    <Card>
+    <S.Card>
       <img src={capa} alt={titulo} />
-      <Infos>
+      <S.Infos>
         {destacado && <Tag>Destaque do Dia</Tag>}{' '}
         {infos.map((infos) => (
           <Tag key={infos}>{infos}</Tag>
         ))}
-      </Infos>
-      <CardItens>
-        <Notes>
-          <Titulo>{titulo}</Titulo>
-          <Avaiable>
+      </S.Infos>
+      <S.CardItens>
+        <S.Notes>
+          <S.Title>{titulo}</S.Title>
+          <S.Avaiable>
             <p>{avaliacao}</p>
             <img src={Estrela} alt="estrela" />
-          </Avaiable>
-        </Notes>
-        <Descricao>{getDescricao(descricao)}</Descricao>
+          </S.Avaiable>
+        </S.Notes>
+        <S.Description>{getDescricao(descricao)}</S.Description>
         <Button
           type="link"
           to={`/categories/${id}`}
@@ -72,8 +64,8 @@ const Product = ({
         >
           Saiba mais
         </Button>
-      </CardItens>
-    </Card>
+      </S.CardItens>
+    </S.Card>
   )
 }
 

@@ -1,16 +1,11 @@
 import { Link } from 'react-router-dom'
-import Logo from '../../Assets/image/logo.svg'
-import {
-  FundoCategories,
-  HeaderStyle,
-  LogoEfood,
-  Textos,
-  CartButton
-} from './styles'
-
-import { open } from '../../store/reducers/cart'
 import { useDispatch, useSelector } from 'react-redux'
+
+import Logo from '../../Assets/image/logo.svg'
+import { open } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
+
+import * as S from './styles'
 
 export type Props = {
   titlePage: string
@@ -28,9 +23,9 @@ const HeaderCategory = ({ titlePage, subtitlePage, image }: Props) => {
   }
 
   return (
-    <HeaderStyle>
+    <S.HeaderStyle>
       <div className="container">
-        <LogoEfood>
+        <S.LogoEfood>
           <ul>
             <Link to="/" className="link">
               Restaurantes
@@ -39,25 +34,25 @@ const HeaderCategory = ({ titlePage, subtitlePage, image }: Props) => {
           <Link to="/">
             <img src={Logo} alt="efood" />
           </Link>
-          <CartButton onClick={openCart}>
+          <S.CartButton onClick={openCart}>
             <li>{items.length} produto(s) no carrinho</li>
-          </CartButton>
-        </LogoEfood>
+          </S.CartButton>
+        </S.LogoEfood>
       </div>
-      <FundoCategories>
+      <S.BackgroundCategories>
         <div
           className="header-categories-config"
           style={{ backgroundImage: `url(${image})` }}
         >
           <div className="container">
-            <Textos>
+            <S.Texts>
               <p>{titlePage}</p>
               <h3>{subtitlePage}</h3>
-            </Textos>
+            </S.Texts>
           </div>
         </div>
-      </FundoCategories>
-    </HeaderStyle>
+      </S.BackgroundCategories>
+    </S.HeaderStyle>
   )
 }
 

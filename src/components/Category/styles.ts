@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, color } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
-  background-color: ${cores.laranja};
-  color: ${cores.amarelo};
+  background-color: ${color.orange};
+  color: ${color.yellow};
   width: 320px;
   height: auto;
   margin-bottom: 32px;
@@ -43,8 +43,8 @@ export const Button = styled.button`
   width: 100%;
   margin-bottom: 8px;
   padding: 4px 8px;
-  background-color: ${cores.amarelo};
-  color: ${cores.laranja};
+  background-color: ${color.yellow};
+  color: ${color.orange};
   border: none;
   cursor: pointer;
 
@@ -53,7 +53,7 @@ export const Button = styled.button`
   }
 
   &:hover {
-    background-color: ${cores.amareloClaro};
+    background-color: ${color.lightYellow};
   }
 `
 export const Modal = styled.div`
@@ -81,8 +81,8 @@ export const Modal = styled.div`
   }
 `
 export const ModalProduct = styled.div`
-  background-color: ${cores.laranja};
-  color: ${cores.branca};
+  background-color: ${color.orange};
+  color: ${color.white};
   display: flex;
   padding: 6px 32px 32px 32px;
   gap: 24px;
@@ -125,23 +125,23 @@ export const ModalProduct = styled.div`
   }
 
   ${ButtonContainer} {
-    background-color: ${cores.amarelo};
+    background-color: ${color.yellow};
     padding: 4px 7px;
     width: 228px;
     height: 24px;
-    color: ${cores.laranja};
+    color: ${color.orange};
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 59px;
     cursor: pointer;
 
     &:hover {
-      background-color: ${cores.branca};
+      background-color: ${color.white};
     }
   }
 `
 export const Close = styled.header`
-  background-color: ${cores.laranja};
+  background-color: ${color.orange};
   display: flex;
   align-items: center;
   justify-content: end;

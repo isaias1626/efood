@@ -1,19 +1,12 @@
 import { useState } from 'react'
-import {
-  Card,
-  Image,
-  CardItens,
-  Button,
-  Modal,
-  Close,
-  ModalProduct
-} from './styles'
+import { useDispatch } from 'react-redux'
 
 import close from '../../Assets/image/close_1.svg'
 import { ButtonContainer } from '../Button/styles'
-import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
-import { Producto } from '../../pages/Home'
+import { ParseToBrl } from '../../utils'
+
+import * as S from './styles'
 
 export type Props = {
   products: Producto
@@ -25,12 +18,6 @@ const Category = ({ products }: Props) => {
   const addToCart = (item: Producto) => {
     dispatch(add(item))
     dispatch(open())
-  }
-
-  const formataPreco = (preco: number) => {
-    return new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(
-      preco
-    )
   }
 
   const getDescricao = (descricao: string) => {
@@ -48,34 +35,34 @@ const Category = ({ products }: Props) => {
         <div className="container" key={index}>
           <ul>
             <li>
-              <Card>
-                <Image>
+              <S.Card>
+                <S.Image>
                   <img src={item.foto} alt="s" />
-                </Image>
-                <CardItens>
+                </S.Image>
+                <S.CardItens>
                   <h4>{item.nome}</h4>
                   <p>{getDescricao(item.descricao)}</p>
-                  <Button
+                  <S.Button
                     onClick={() => setModalIndex(index)}
                     type="button"
                     title={'clique aqui para ver mais informações do produto'}
                   >
                     Adicionar ao carrinho
-                  </Button>
-                </CardItens>
-              </Card>
+                  </S.Button>
+                </S.CardItens>
+              </S.Card>
             </li>
           </ul>
-          <Modal className={modalIndex === index ? 'visivel' : ''}>
+          <S.Modal className={modalIndex === index ? 'visivel' : ''}>
             <div className="container">
-              <Close>
+              <S.Close>
                 <img
                   src={close}
                   alt="icone de fechar"
                   onClick={() => setModalIndex(-1)}
                 />
-              </Close>
-              <ModalProduct>
+              </S.Close>
+              <S.ModalProduct>
                 <div>
                   <img src={item.foto} alt="imagem do produto" />
                 </div>
@@ -89,13 +76,13 @@ const Category = ({ products }: Props) => {
                     title="Clique aqui para adicionar ao carrinho"
                   >
                     Adicionar ao carrinho -{' '}
-                    <span>R$: {formataPreco(item.preco)}</span>
+                    <span>R$: {ParseToBrl(item.preco)}</span>
                   </ButtonContainer>
                 </div>
-              </ModalProduct>
+              </S.ModalProduct>
               <div className="overlay" onClick={() => setModalIndex(-1)}></div>
             </div>
-          </Modal>
+          </S.Modal>
         </div>
       ))}
     </>

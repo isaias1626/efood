@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import ProductListCategory from '../../components/ProductListCategory'
 
-import { Producto } from '../Home'
+import ProductListCategory from '../../components/ProductListCategory'
 
 const Categories = () => {
   const [prdItem, setPrdItem] = useState<Producto[]>([])

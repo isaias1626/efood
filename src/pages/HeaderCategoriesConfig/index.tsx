@@ -1,6 +1,6 @@
-import { Producto } from '../Home'
-import HeaderCategory from '../../components/HeaderCategory'
 import { useParams } from 'react-router-dom'
+
+import HeaderCategory from '../../components/HeaderCategory'
 
 type Props = {
   products: Producto[]

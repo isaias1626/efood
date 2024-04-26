@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import Fundo from '../../Assets/image/fundo.png'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, color } from '../../styles'
 
 export const HeaderStyle = styled.header`
   background-image: url(${Fundo});
@@ -11,7 +11,7 @@ export const HeaderStyle = styled.header`
   margin-bottom: 56px;
 
   @media (max-width: ${breakpoints.tablet}) {
-    display: none;
+    height: 310px;
   }
 `
 
@@ -28,7 +28,7 @@ export const LogoEfood = styled.div`
   .link {
     list-style: none;
     text-decoration: none;
-    color: ${cores.laranja};
+    color: ${color.orange};
 
     &:hover {
       opacity: 0.8;
@@ -39,8 +39,17 @@ export const LogoEfood = styled.div`
     width: 125px;
     margin-left: 85px;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 12px;
+
+    img {
+      width: 70px;
+      margin-right: 50px;
+    }
+  }
 `
-export const FundoCategories = styled.div`
+export const BackgroundCategories = styled.div`
   display: flex;
 
   .header-categories-config {
@@ -49,23 +58,29 @@ export const FundoCategories = styled.div`
     max-width: 100%;
     background-size: cover;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    .header-categories-config {
+      height: 185px;
+    }
+  }
 `
-export const Textos = styled.div`
+export const Texts = styled.div`
   display: block;
 
   p {
     font-size: 32px;
-    color: ${cores.branca};
+    color: ${color.white};
     line-height: 37px;
     font-weight: 100;
     margin-top: 25px;
     margin-bottom: 156px;
-    opacity: 0.6;
+    opacity: 0.9;
   }
 
   h3 {
     font-size: 32px;
-    color: ${cores.branca};
+    color: ${color.white};
     line-height: 37px;
     font-weight: bold;
   }
@@ -74,6 +89,20 @@ export const Textos = styled.div`
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    p {
+      font-size: 12px;
+      margin-bottom: 110px;
+      margin-top: 12px;
+      opacity: 0.9;
+    }
+
+    h3 {
+      line-height: 24px;
+      font-size: 18px;
+    }
   }
 `
 export const CartButton = styled.ul`

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, color } from '../../styles'
 
 export const Card = styled.div`
-  background-color: ${cores.branca};
-  border: 1px solid ${cores.laranja};
+  background-color: ${color.white};
+  border: 1px solid ${color.orange};
   position: relative;
   margin-bottom: 48px;
 
@@ -24,7 +24,7 @@ export const CardItens = styled.div`
   padding: 8px 8px;
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-weight: bold;
   font-size: 18px;
   display: block;
@@ -32,7 +32,7 @@ export const Titulo = styled.h3`
   margin-bottom: 16px;
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   display: block;

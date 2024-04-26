@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, color } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 import lixeira from '../../Assets/image/lixeira-de-reciclagem_1.svg'
@@ -28,8 +28,8 @@ export const CardContainer = styled.div`
   }
 
   ${ButtonContainer} {
-    background-color: ${cores.amarelo};
-    color: ${cores.laranja};
+    background-color: ${color.yellow};
+    color: ${color.orange};
     cursor: pointer;
     font-size: 14px;
     font-weight: 700;
@@ -37,7 +37,7 @@ export const CardContainer = styled.div`
   }
 `
 export const Sidebar = styled.aside`
-  background-color: ${cores.laranja};
+  background-color: ${color.orange};
   z-index: 1;
   padding: 32px 8px 0 8px;
   max-width: 360px;
@@ -45,14 +45,23 @@ export const Sidebar = styled.aside`
   overflow-y: auto;
   padding-bottom: 40px;
 
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${color.yellow};
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+  }
+
   @media (max-width: ${breakpoints.tablet}) {
-    max-width: 260px;
+    max-width: 300px;
   }
 `
 export const TotalPrice = styled.div`
   display: flex;
   justify-content: space-between;
-  color: ${cores.amarelo};
+  color: ${color.yellow};
   margin-top: 40px;
   margin-bottom: 16px;
 
@@ -62,7 +71,7 @@ export const TotalPrice = styled.div`
   }
 `
 export const CartItem = styled.li`
-  background-color: ${cores.amarelo};
+  background-color: ${color.yellow};
   display: flex;
   padding: 8px;
   margin-bottom: 16px;
@@ -103,4 +112,11 @@ export const CartItem = styled.li`
       transform: scale(1.4) rotate(7deg);
     }
   }
+`
+export const EmptyCart = styled.div`
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 24px;
 `

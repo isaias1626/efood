@@ -9,7 +9,7 @@ export const HeaderStyle = styled.header`
   background-repeat: no-repeat;
 
   @media (max-width: ${breakpoints.tablet}) {
-    display: none;
+    height: 140px;
   }
 `
 
@@ -20,6 +20,13 @@ export const LogoEfood = styled.div`
   img {
     width: 125px;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding-top: 24px;
+    img {
+      width: 85px;
+    }
+  }
 `
 export const Title = styled.h1`
   line-height: 42px;
@@ -27,4 +34,10 @@ export const Title = styled.h1`
   font-size: 36px;
   padding-top: 138px;
   font-weight: bold;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 18px;
+    line-height: 24px;
+    padding-top: 16px;
+  }
 `

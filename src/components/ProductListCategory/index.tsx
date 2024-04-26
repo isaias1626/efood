@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react'
-import { List, Loader } from './styles'
 import { useParams } from 'react-router-dom'
+
 import Category from '../Category'
 import { useGetProductQuery } from '../../services/api'
+import Loader from '../Loader'
+
+import * as S from './styles'
+
+type ProductParams = {
+  id: string
+}
 
 const ProductListCategory = () => {
-  const { id } = useParams()
-  const { data: product } = useGetProductQuery(id!)
+  const { id } = useParams() as ProductParams
+  const { data: product } = useGetProductQuery(id)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -18,7 +25,7 @@ const ProductListCategory = () => {
   }, [])
 
   if (loading) {
-    return <Loader className="loader"></Loader>
+    return <Loader />
   }
 
   if (!product) {
@@ -27,9 +34,9 @@ const ProductListCategory = () => {
 
   return (
     <div className="container">
-      <List>
+      <S.List>
         <Category products={product} />
-      </List>
+      </S.List>
     </div>
   )
 }
