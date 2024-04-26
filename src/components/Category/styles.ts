@@ -107,7 +107,7 @@ export const ModalProduct = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    padding: 8px;
+    padding: 0 32px 24px 32px;
     display: block;
 
     h4 {

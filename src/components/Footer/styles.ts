@@ -2,10 +2,12 @@ import styled from 'styled-components'
 import { color } from '../../styles'
 
 export const FooterBack = styled.div`
+  position: relative;
   background-color: ${color.yellow};
   height: 298px;
   margin-top: 88px;
   bottom: 0;
+  left: 0;
 `
 
 export const Logo = styled.div`
