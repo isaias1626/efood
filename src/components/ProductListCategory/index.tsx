@@ -29,7 +29,7 @@ const ProductListCategory = () => {
   }
 
   if (!product) {
-    return <h3>Produto não encontrado.</h3>
+    return <h3>Produto não encontrado, Por favor tente novamente mais tarde</h3>
   }
 
   return (
