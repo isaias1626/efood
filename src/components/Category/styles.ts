@@ -107,6 +107,7 @@ export const ModalProduct = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
+    padding: 8px;
     display: block;
 
     h4 {
@@ -137,6 +138,10 @@ export const ModalProduct = styled.div`
 
     &:hover {
       background-color: ${color.white};
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      margin-bottom: 8px;
     }
   }
 `
