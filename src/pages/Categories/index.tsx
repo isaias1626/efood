@@ -1,17 +1,10 @@
-import { useEffect, useState } from 'react'
-
+import { useGetRestaurantQuery } from '../../services/api'
 import ProductListCategory from '../../components/ProductListCategory'
 
 const Categories = () => {
-  const [prdItem, setPrdItem] = useState<Producto[]>([])
+  const { data: product } = useGetRestaurantQuery()
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes`)
-      .then((res) => res.json())
-      .then((res) => setPrdItem(res))
-  }, [])
-
-  if (!prdItem) {
+  if (!product) {
     return <h3>Carregando...</h3>
   }
 
@@ -23,10 +16,3 @@ const Categories = () => {
 }
 
 export default Categories
-
-//italiana
-//árabe
-//japonês
-//português
-//pizzaria
-//vegano

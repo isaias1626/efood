@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import Swal from 'sweetalert2'
 
 type CartState = {
   items: Producto[]
@@ -24,7 +25,7 @@ const cartSlice = createSlice({
       if (!products) {
         state.items.push(action.payload)
       } else {
-        alert('O produto já está no carrinho')
+        Swal.fire('Atenção', 'O produto já está no carrinho', 'error')
       }
     },
     remove: (state, action: PayloadAction<number>) => {

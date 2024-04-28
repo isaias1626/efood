@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom'
 import HeaderCategory from '../../components/HeaderCategory'
 
 type Props = {
-  products: Producto[]
+  products?: Producto[]
 }
 
 const HeaderCategoriesConfig = ({ products }: Props) => {
   const { id } = useParams<{ id: string }>()
 
   const filteredProducts = id
-    ? products.filter((prd) => prd.id === parseInt(id))
+    ? products && products.filter((prd) => prd.id === parseInt(id))
     : []
 
   if (!products) {
@@ -19,7 +19,7 @@ const HeaderCategoriesConfig = ({ products }: Props) => {
 
   return (
     <div>
-      {filteredProducts.map((prd) => (
+      {filteredProducts?.map((prd) => (
         <HeaderCategory
           key={prd.id}
           titlePage={prd.tipo}

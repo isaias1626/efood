@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, useNavigate } from 'react-router-dom'
 import InputMask from 'react-input-mask'
 import * as Yup from 'yup'
+import Swal from 'sweetalert2'
 
 import { close, clear } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
@@ -21,7 +22,21 @@ const Checkout = () => {
   const [step, setStep] = useState(1)
 
   const handleContinueToPayment = () => {
-    setStep(2)
+    if (
+      form.values.fullName &&
+      form.values.address &&
+      form.values.city &&
+      form.values.cep &&
+      form.values.numberHouse
+    ) {
+      setStep(2)
+    } else {
+      Swal.fire(
+        'Atenção',
+        'Preencha todos os campos para continuar com o pagamento',
+        'error'
+      )
+    }
   }
 
   const handleGoBackToAddress = () => {

@@ -4,17 +4,11 @@ import Home from './pages/Home'
 import Categories from './pages/Categories'
 import Header from './components/Header'
 import HeaderCategoriesConfig from './pages/HeaderCategoriesConfig'
-import { useEffect, useState } from 'react'
+import { useGetRestaurantQuery } from './services/api'
 import Checkout from './pages/Checkout'
 
 const Rotas = () => {
-  const [produtos, setProdutos] = useState<Producto[]>([])
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes`)
-      .then((res) => res.json())
-      .then((res) => setProdutos(res))
-  }, [])
+  const { data: product } = useGetRestaurantQuery()
 
   return (
     <Routes>
@@ -31,7 +25,7 @@ const Rotas = () => {
         path="/categories/:id"
         element={
           <>
-            <HeaderCategoriesConfig products={produtos} />
+            <HeaderCategoriesConfig products={product} />
             <Categories />
           </>
         }
